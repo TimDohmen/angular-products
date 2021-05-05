@@ -1,10 +1,18 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
+  // use this selector to insert into your index
   selector: 'pm-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  // linked template vs inline template
+  template: /*html*/`
+  <div>
+  <h1>{{pageTitle}}</h1>
+  <h3> This is the first component </h3>
+  <div>
+  `
 })
+
 export class AppComponent {
-  title = 'Angular: Getting Started';
+  // can put breakpoints in this to watch values as it builds
+  pageTitle: string = 'Acme Product Management';
 }
