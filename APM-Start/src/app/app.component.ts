@@ -8,6 +8,7 @@ import { Component } from "@angular/core";
   <div>
   <h1>{{pageTitle}}</h1>
   <h3> This is the first component </h3>
+  <pm-products></pm-products>
   <div>
   `
 })
