@@ -2,42 +2,42 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ProductListComponent } from './products/product-list.component';
-import { FormsModule } from '@angular/forms';
-import { ConvertToSpaces } from './shared/convert-to-spaces.pipe';
-import { StarComponent } from './shared/star.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductDetailComponent } from './products/product-detail.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { RouterModule } from '@angular/router';
-import { ProductDetailGuard } from './products/product-detail.guard';
+import { ProductModule } from './products/product.module';
 
 @NgModule({
   // so html can find its selector
-  // components must be declared in a module
+  // components must be declared in a module and are private by default
+  // each component must belong to one and only one module
+  // only declare components directives and pipes
   declarations: [
     AppComponent,
     WelcomeComponent,
-    ProductListComponent,
-    ConvertToSpaces,
-    StarComponent,
-    ProductDetailComponent
   ],
   // our local directives fomr from declarations
   // directives components and pipes from other exports go in imports
   imports: [
     BrowserModule,
-    FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
-      { path: 'products', component: ProductListComponent },
-      { path: 'products/:id', canActivate: [ProductDetailGuard], component: ProductDetailComponent },
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' },
-    ])
+    ]),
+    ProductModule
   ],
-  // startup component
+  exports: [],
+  // can use an exports array to share declarations with other modules 
+  // because they can only be declared in one
+
+  // old way to register injectors
+  // providers:[]
+  // can make feature modules to make a module for products and organize the app for 
+  // products to have everything they need in that one feature
+
+  // defines startup component when app is launches, every app must bootstrap one component
   bootstrap: [AppComponent]
 })
 export class AppModule { }
