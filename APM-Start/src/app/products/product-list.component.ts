@@ -1,18 +1,25 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { IProduct } from "./product.interface";
 
 @Component({
   selector: 'pm-products',
-  templateUrl: './product-list.component.html'
+  templateUrl: './product-list.component.html',
+  // can do styles or styleUrls
+  styleUrls: ['./product-list.component.css']
 })
 
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
   pageTitle: string = 'Product List';
   // strings and number types dont need to be explicity typed
   imageWidth: number = 50;
   imageMargin: number = 2;
   showImage: boolean = false;
   listFilter = 'cart'
+
+  ngOnInit(): void {
+    console.log('OnInit hook')
+  }
+
   products: IProduct[] = [
     {
       "productId": 1,
