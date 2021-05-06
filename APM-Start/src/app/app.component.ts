@@ -7,10 +7,11 @@ import { Component } from "@angular/core";
   template: /*html*/`
   <div>
   <h1>{{pageTitle}}</h1>
-  <h3> This is the first component </h3>
   <pm-products></pm-products>
   <div>
   `
+  // pm-products is a directive
+  // structural directive that is built in to angular
 })
 
 export class AppComponent {
