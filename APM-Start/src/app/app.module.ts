@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list.component';
 import { FormsModule } from '@angular/forms';
 import { ConvertToSpaces } from './shared/convert-to-spaces.pipe';
+import { StarComponent } from './shared/star.component';
 
 @NgModule({
   // so html can find its selector
@@ -12,7 +13,8 @@ import { ConvertToSpaces } from './shared/convert-to-spaces.pipe';
   declarations: [
     AppComponent,
     ProductListComponent,
-    ConvertToSpaces
+    ConvertToSpaces,
+    StarComponent
   ],
   // our local directives fomr from declarations
   // directives components and pipes from other exports go in imports
