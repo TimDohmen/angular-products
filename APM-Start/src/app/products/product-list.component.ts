@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
 import { ProductService } from "./product-service";
 import { IProduct } from "./product.interface";
 
@@ -9,7 +10,7 @@ import { IProduct } from "./product.interface";
   styleUrls: ['./product-list.component.css']
 })
 
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
   constructor(private productService: ProductService) {
     // can do access mod in constructor so you dont need _productService = productService
   }
@@ -18,6 +19,10 @@ export class ProductListComponent implements OnInit {
   imageWidth: number = 50;
   imageMargin: number = 2;
   showImage: boolean = false;
+
+  errorMessage: string = ""
+  sub!: Subscription;
+
   // listFilter = 'cart'
   private _listFilter = ''
   get listFilter(): string {
@@ -44,13 +49,26 @@ export class ProductListComponent implements OnInit {
     this.showImage = !this.showImage
   }
 
+
   ngOnInit(): void {
     console.log('OnInit hook')
     // this.listFilter = 'cart'
-    this.products = this.productService.getProducts();
-    this.filteredProducts = this.products;
+    this.sub = this.productService.getProducts().subscribe({
+      next: products => {
+        this.products = products;
+        this.filteredProducts = this.products;
+      },
+      error: err => this.errorMessage = err
+      // can also do a complete action in here as well
+      // good to unsubscribe to obseravable as well
+    });
   }
 
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
+  // recieves emit from child component
   onRatingClicked(message: string): void {
     this.pageTitle = 'Product List ' + message
   }

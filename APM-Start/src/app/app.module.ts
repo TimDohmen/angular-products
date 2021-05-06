@@ -6,6 +6,7 @@ import { ProductListComponent } from './products/product-list.component';
 import { FormsModule } from '@angular/forms';
 import { ConvertToSpaces } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/star.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   // so html can find its selector
@@ -20,7 +21,8 @@ import { StarComponent } from './shared/star.component';
   // directives components and pipes from other exports go in imports
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   // startup component
   bootstrap: [AppComponent]
