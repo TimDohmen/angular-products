@@ -12,7 +12,7 @@ import { Component } from "@angular/core";
   <li><a class='nav-link' routerLink='/products'>Product</a></li>
   </ul>
   </nav>
-  <div class='container'>
+  <div class='container-fluid'>
   <router-outlet>
   </router-outlet>
   </div >
