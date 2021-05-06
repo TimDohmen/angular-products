@@ -4,7 +4,7 @@ import { ProductService } from "./product-service";
 import { IProduct } from "./product.interface";
 
 @Component({
-  selector: 'pm-products',
+  // selector: 'pm-products',
   templateUrl: './product-list.component.html',
   // can do styles or styleUrls
   styleUrls: ['./product-list.component.css']
