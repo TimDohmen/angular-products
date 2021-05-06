@@ -3,16 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   // so html can find its selector
   // components must be declared in a module
   declarations: [
     AppComponent,
-    ProductListComponent
+    ProductListComponent,
   ],
+  // our local directives fomr from declarations
+  // directives components and pipes from other exports go in imports
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   // startup component
   bootstrap: [AppComponent]
